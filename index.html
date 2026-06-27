@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>오늘의 교양</title>
+  <style>
+    /* 평소엔 '속(더보기 내용)'을 숨겨둠 (display:none = 화면에서 감춤) */
+    .oc-detail { display: none; }
+    /* JS가 'open' 클래스를 붙이면 다시 보이게 (display:block) */
+    .oc-detail.open { display: block; }
+    /* '흔한 착각'에만 아주 옅은 회색 배경 + 약간 여백 (구분 기능). 그 외 색·꾸밈 없음 */
+    .oc-warn { background: #f1f1f1; padding: 8px 10px; }
+  </style>
 </head>
 <body>
   <header>
@@ -19,11 +27,29 @@
       <p class="use">→ "쟨 원래 그래" 대신 "무슨 사정 있나?"를 한 번 끼우면 미움이 준다.</p>
     </article>
 
+    <!-- ===== 기회비용 카드 (풀버전). 이 카드만 교체했고, 위(근본 귀인 오류)·아래(관성)는 그대로 둠 ===== -->
     <article class="card">
+      <!-- 겉: 항상 보이는 부분 -->
       <span class="field">경제</span>
       <h2>기회비용</h2>
-      <p class="core">무언가를 선택할 때, 그 때문에 포기한 다른 선택지의 가치.</p>
-      <p class="use">→ '공짜'는 없다. 이 시간에 할 수 있었던 다른 일이 진짜 비용.</p>
+      <p><small>Opportunity Cost</small></p>
+      <p class="core">무언가를 선택할 때, 그 때문에 포기한 가장 나은 다른 선택지의 가치.</p>
+      <p class="hook"><strong>직관 고리:</strong> (영화 예) "남은 1시간을 더 나은 데 쓸 수 있나"를 따질 때 그 '포기한 더 나은 것'이 기회비용 — 이미 쓰던 개념에 이름 붙이기.</p>
+
+      <!-- 더보기 버튼: 누르면 toggleDetail()이 실행돼 아래 '속'을 펼치고/접음 -->
+      <button class="oc-toggle" onclick="toggleDetail(this)">더보기 ▼</button>
+
+      <!-- 속: 평소엔 숨겨져 있다가 더보기 누르면 펼쳐짐. 7요소를 템플릿 순서대로 -->
+      <div id="oc-detail" class="oc-detail">
+        <p><strong>유래</strong> — 프리드리히 폰 비저, 1914 『사회경제이론』. 비용을 '포기한 만족'으로 재정의(‘한계효용’도 그가 만듦).</p>
+        <p><strong>원리</strong> — 진짜 비용 = 명시적(돈) + 암묵적(포기한 대안). "공짜 점심은 없다."</p>
+        <p><strong>예시</strong><br>① 대학 4년 진짜 비용 = 등록금 + 못 번 월급<br>② 주말 게임 5시간 = '그 시간에 할 수 있던 것'</p>
+        <p class="oc-warn"><strong>⚠️ 흔한 착각</strong> — 이미 쓴 돈은 매몰비용(무시), 기회비용은 '안 고른 선택'의 가치.</p>
+        <p><strong>의의</strong> — 시간·기회도 비용 → 성격 다른 선택을 같은 잣대로 비교 가능.</p>
+        <p><strong>활용</strong> — "이 선택의 기회비용은?" → 후회 감소. 대화에서 "그건 기회비용이 크지" 통함.</p>
+        <p><strong>더 배우기</strong> — 매몰비용과 세트. 검색어: 기회비용 · 매몰비용 · 한계적 사고.</p>
+        <p class="src">✓ 출처: 폰 비저, 1914 『사회경제이론』</p>
+      </div>
     </article>
 
     <article class="card">
@@ -37,5 +63,14 @@
   <footer>
     <p>가짜 데이터예요 — M1 연습용</p>
   </footer>
+
+  <script>
+    // '더보기' 버튼을 누르면 실행. btn = 방금 눌린 버튼 자신.
+    function toggleDetail(btn) {
+      var detail = document.getElementById('oc-detail'); // 펼칠 '속' 영역을 id로 찾음
+      var opened = detail.classList.toggle('open');       // 'open' 클래스 토글: 있으면 빼고(접힘)·없으면 더함(펼침). 반환값 = 지금 열렸는지(true/false)
+      btn.textContent = opened ? '접기 ▲' : '더보기 ▼';   // 열림/접힘에 맞춰 버튼 글자 바꾸기
+    }
+  </script>
 </body>
 </html>
