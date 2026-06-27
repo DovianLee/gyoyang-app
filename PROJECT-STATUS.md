@@ -49,8 +49,9 @@
 | M6 | 계정 · 공개 → 제품화 | 예정 |
 
 ## 6. 지금 위치
-**M1 진행 중.** `gyoyang-app` 폴더 + `index.html`(가짜 카드 3개) 생성 완료.
-다음 순서: 브라우저로 확인 → 스타일(CSS) → PWA화(manifest · service worker) → Vercel 배포 → 폰에서 홈 화면 추가.
+**M1 진행 중.** 완료: `gyoyang-app` 폴더, `index.html`(자리표시 카드 3개), 콘텐츠 템플릿 확정(`CONTENT-TEMPLATE.md`), **git init → commit → GitHub(Public, DovianLee/gyoyang-app) push 완료** (로컬 ↔ 원격 동기화).
+남은 순서(M1): PWA화(manifest · service worker · 아이콘) → index.html에 실제 콘텐츠·디자인 → Vercel 배포(계정 대기 중) → 폰 홈 화면 추가.
+주의: index.html은 아직 자리표시 콘텐츠. PUBLIC 저장소라 M3 API 키는 반드시 env + .gitignore.
 
 ## 7. Claude chat에게
 이 사용자가 위 맥락으로 질문하면 **초보 눈높이(대학생 기준)로 쉽고 정확하게**, 한 번에 하나씩 답해주세요. 코드를 줄 땐 "이게 무엇을 하는지" 한 줄 설명을 붙여주세요.
