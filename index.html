@@ -20,11 +20,29 @@
   </header>
 
   <main>
+    <!-- ===== 오컴의 면도날 카드 (철학). 옛 '근본 귀인 오류' 자리를 교체. 기회비용 카드는 안 건드림 ===== -->
     <article class="card">
-      <span class="field">됨됨이·관계</span>
-      <h2>근본 귀인 오류</h2>
-      <p class="core">남의 실수는 '사람 탓', 내 실수는 '상황 탓'으로 돌리는 마음의 기본 버그.</p>
-      <p class="use">→ "쟨 원래 그래" 대신 "무슨 사정 있나?"를 한 번 끼우면 미움이 준다.</p>
+      <!-- 겉: 항상 보이는 부분 -->
+      <span class="field">철학</span>
+      <h2>오컴의 면도날</h2>
+      <p><small>Occam's Razor</small></p>
+      <p class="core">같은 현상을 똑같이 잘 설명하는 두 가설이 있으면, 가정이 더 적은 쪽을 택하라는 원칙.</p>
+      <p class="hook"><strong>직관 고리:</strong> 뭔가 이상할 때 "거창한 음모보다 그냥 단순한 실수겠지" 하고 단순한 쪽을 먼저 의심하지? 그게 오컴의 면도날이야 — 이름만 몰랐을 뿐.</p>
+
+      <!-- 더보기 버튼: toggleDetail()이 '같은 카드 안의 속'을 펼치고 접음 -->
+      <button class="oc-toggle" onclick="toggleDetail(this)">더보기 ▼</button>
+
+      <!-- 속: 7요소 (유래→원리→예시→흔한착각→의의→활용→더배우기) -->
+      <div class="oc-detail">
+        <p><strong>유래</strong> — 14세기 영국 수도사·철학자 윌리엄 오브 오컴과 연결됨. 단, 그가 이 말을 만든 건 아니고 — "필요 없이 여럿을 두지 말라"는 생각을 자주·날카롭게 써서 이름이 붙음.</p>
+        <p><strong>원리</strong> — 두 설명의 '설명력이 같을 때', 가정이 적은 쪽이 틀릴 구석도 적어 대개 낫다. '단순함=진리'라서가 아니라 불필요한 가정을 덜어내는 것.</p>
+        <p><strong>예시</strong><br>① 밤에 쿵 소리 → "도둑"보다 "바람에 문 닫힘"을 먼저 의심(가정이 적음)<br>② 진단 격언 "말발굽 소리엔 얼룩말 말고 말을 떠올려라" — 흔한 원인 우선</p>
+        <p class="oc-warn"><strong>⚠️ 흔한 착각</strong> — "단순한 설명이 항상 맞다"가 아님. 설명력이 같을 때만 단순한 쪽 우선(설명 못 하면 단순해도 탈락). 또 '오컴의 면도날'이란 이름도 오컴이 지은 게 아니라 후대(1852년)에 붙음.</p>
+        <p><strong>의의</strong> — 생각·과학·일상에서 불필요한 가정을 덜어내는 도구. 음모론·과잉해석을 거르는 기본기.</p>
+        <p><strong>활용</strong> — 원인을 추측할 때 "가장 적은 가정으로 설명되는 게 뭐지?"를 먼저. 회의·토론에서 과한 추측을 자를 때.</p>
+        <p><strong>더 배우기</strong> — 짝 개념: 확증편향 · 휴리스틱. 검색어: 오컴의 면도날 · 윌리엄 오브 오컴 · 절약의 원리(parsimony).</p>
+        <p class="src">✓ 출처: 윌리엄 오브 오컴(14c); '오컴의 면도날' 명칭은 1852년 W.R.해밀턴이 처음 사용 (Britannica·Wikipedia 확인)</p>
+      </div>
     </article>
 
     <!-- ===== 기회비용 카드 (풀버전). 이 카드만 교체했고, 위(근본 귀인 오류)·아래(관성)는 그대로 둠 ===== -->
@@ -67,7 +85,7 @@
   <script>
     // '더보기' 버튼을 누르면 실행. btn = 방금 눌린 버튼 자신.
     function toggleDetail(btn) {
-      var detail = document.getElementById('oc-detail'); // 펼칠 '속' 영역을 id로 찾음
+      var detail = btn.parentElement.querySelector('.oc-detail'); // 눌린 버튼과 '같은 카드' 안의 속을 찾음 (카드가 여러 개여도 각자 동작)
       var opened = detail.classList.toggle('open');       // 'open' 클래스 토글: 있으면 빼고(접힘)·없으면 더함(펼침). 반환값 = 지금 열렸는지(true/false)
       btn.textContent = opened ? '접기 ▲' : '더보기 ▼';   // 열림/접힘에 맞춰 버튼 글자 바꾸기
     }
